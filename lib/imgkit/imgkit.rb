@@ -181,8 +181,8 @@ class IMGKit
       raise ImproperSourceError.new('Javascripts may only be added to an HTML source') if javascripts.any? && !@source.html?
 
       javascripts.each do |javascript|
-        if @source.to_s.match(/<\/head>/)
-          @source.to_s.gsub!(/(<\/head>)/, script_tag_for(javascript)+'\1')
+        if @source.to_s.match(/<\/body>/)
+          @source.to_s.gsub!(/(<\/body>)/, script_tag_for(javascript)+'\1')
         else
           @source.to_s.insert(0, script_tag_for(javascript))
         end
